@@ -60,18 +60,10 @@ while($row = $result->fetch_assoc()){
     <?php
 }
 ?>
-<?php
-while($row = $result->fetch_assoc()){
-    ?>
-    <tr>
-    <td><?php echo $row['servicetype']; ?></td>
-    <td><?php echo $row['itemname']; ?></td>
-    <td><?php echo $row['itemprice']; ?></td>
-   
-    </tr>
-    <?php
-}
-?>
+</table>
+</div>
+</body>
+</html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -120,6 +112,9 @@ while($row = $result->fetch_assoc()){
         <center>
         <h3 style="margin-left: 1em; margin-top: 1em; text-decoration: underline;">Customer View Food Service</h3>
         <br><br>
+		
+  
+</form>
 
             <div style="margin-left: 1.5em;">
 
