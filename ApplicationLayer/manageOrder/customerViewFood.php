@@ -10,6 +10,56 @@
         $service->addCart();
     }
 ?>
+<?php
+$localhost = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sdw";
+$con = new mysqli($localhost, $username, $password, $dbname);
+if( $con->connect_error){
+    die('Error: ' . $con->connect_error);
+}
+$sql = "SELECT * FROM product";
+if( isset($_G['search']) ){
+    $name = mysqli_real_escape_string($con, htmlspecialchars($_GET['search']));
+    $sql = "SELECT servicetype,itemname,itemprice FROM product WHERE itemname ='%search%'";
+}
+$result = $con->query($sql);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Basic Search form using mysqli</title>
+<link rel="stylesheet" type="text/css"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+<label>Search</label>
+<form action="" method="">
+<input type="text" placeholder="Type the name here" name="search">&nbsp;
+<input type="submit" value="search" name="btn" class="btn btn-sm btn-primary">
+</form>
+<h2>List of students</h2>
+<table class="table table-striped table-responsive">
+<tr>
+<th>Service Type</th>
+<th>Item name</th>
+<th>Item Price</th>
+
+</tr>
+<?php
+while($row = $result->fetch_assoc()){
+    ?>
+    <tr>
+    <td><?php echo $row['servicetype']; ?></td>
+    <td><?php echo $row['itemname']; ?></td>
+    <td><?php echo $row['itemprice']; ?></td>
+   
+    </tr>
+    <?php
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
