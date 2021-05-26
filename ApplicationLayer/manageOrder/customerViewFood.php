@@ -60,6 +60,18 @@ while($row = $result->fetch_assoc()){
     <?php
 }
 ?>
+<?php
+while($row = $result->fetch_assoc()){
+    ?>
+    <tr>
+    <td><?php echo $row['servicetype']; ?></td>
+    <td><?php echo $row['itemname']; ?></td>
+    <td><?php echo $row['itemprice']; ?></td>
+   
+    </tr>
+    <?php
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
