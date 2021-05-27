@@ -77,6 +77,8 @@ function filterTable($query)
 </html>
 
 
+
+
 </table>
 </div>
 </body>
