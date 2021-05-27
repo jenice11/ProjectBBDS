@@ -11,55 +11,72 @@
     }
 ?>
 <?php
-$localhost = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sdw";
-$con = new mysqli($localhost, $username, $password, $dbname);
-if( $con->connect_error){
-    die('Error: ' . $con->connect_error);
+
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = "SELECT * FROM `product` WHERE CONCAT(`servicetype`, `itemname`, `itemprice`) LIKE '%".$valueToSearch."%'";
+    $search_result = filterTable($query);
+    
 }
-$sql = "SELECT * FROM product";
-if( isset($_G['search']) ){
-    $name = mysqli_real_escape_string($con, htmlspecialchars($_GET['search']));
-    $sql = "SELECT servicetype,itemname,itemprice FROM product WHERE itemname ='%search%'";
+ else {
+    $query = "SELECT * FROM `product`";
+    $search_result = filterTable($query);
 }
-$result = $con->query($sql);
+
+// function to connect and execute the query
+function filterTable($query)
+{
+    $connect = mysqli_connect("localhost", "root", "", "sdw");
+    $filter_Result = mysqli_query($connect, $query);
+    return $filter_Result;
+}
+
 ?>
+
 <!DOCTYPE html>
 <html>
-<head>
-<title>Basic Search form using mysqli</title>
-<link rel="stylesheet" type="text/css"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-<label>Search</label>
-<form action="" method="">
-<input type="text" placeholder="Type the name here" name="search">&nbsp;
-<input type="submit" value="search" name="btn" class="btn btn-sm btn-primary">
-</form>
-<h2>List of students</h2>
-<table class="table table-striped table-responsive">
-<tr>
-<th>Service Type</th>
-<th>Item name</th>
-<th>Item Price</th>
+    <head>
+        <title>PHP HTML TABLE DATA SEARCH</title>
+        <style>
+            table,tr,th,td
+            {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <form action="" method="post">
+            <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
+            <input type="submit" name="search" value="Filter"><br><br>
+            
+            <table>
+                <tr>
 
-</tr>
-<?php
-while($row = $result->fetch_assoc()){
-    ?>
-    <tr>
-    <td><?php echo $row['servicetype']; ?></td>
-    <td><?php echo $row['itemname']; ?></td>
-    <td><?php echo $row['itemprice']; ?></td>
-   
-    </tr>
-    <?php
-}
-?>
+                    <th>Service Type</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+
+      <!-- populate table from mysql database -->
+                <?php while($row = mysqli_fetch_array($search_result)):?>
+                <tr>
+                    
+                    <td><?php echo $row['servicetype'];?></td>
+                    <td><?php echo $row['itemname'];?></td>
+                    <td><?php echo $row['itemprice'];?></td>
+                </tr>
+                <?php endwhile;?>
+            </table>
+        </form>
+        
+    </body>
+</html>
+
+
 </table>
 </div>
 </body>
