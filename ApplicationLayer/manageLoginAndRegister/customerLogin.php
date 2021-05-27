@@ -49,6 +49,10 @@ if(isset($_POST['login'])){
                 color: blue;
             }
 
+            .reset {
+                color: blue;
+            }
+
             .register:hover {
                 color : rgb(0, 81, 255);
                 text-decoration: none; 
@@ -102,6 +106,9 @@ if(isset($_POST['login'])){
         <br>
         <div style="text-align: center; font-size: medium;">
             Don't have an account? <a class="register" href="./customerRegister.php"><u>Register here</u></a>.
+             <div style="font-size: medium;">
+           <a class="reset" href="./custResetPass.php"><u>Forgot Password?</u></a>.
+        </div>
         </div>
     </body>
 </html>
