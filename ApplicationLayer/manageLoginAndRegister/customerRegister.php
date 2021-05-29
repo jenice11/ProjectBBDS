@@ -6,6 +6,9 @@ if(isset($_POST['custregister'])){
     $user->custRegister();
 }
 ?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +19,9 @@ if(isset($_POST['custregister'])){
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <style>
             p {
@@ -55,6 +61,11 @@ if(isset($_POST['custregister'])){
                 cursor: pointer;
                 opacity: 0.9;
             }
+
+           
+.status-available{color:#2FC332;}
+.status-not-available{color:#D60202;}
+
         </style>
     </head>
 
@@ -71,6 +82,23 @@ if(isset($_POST['custregister'])){
         }
     </script>
 
+<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script>
+function checkAvailability() {
+    $("#loaderIcon").show();
+    jQuery.ajax({
+    url: "check_availability.php",
+    data:'custusername='+$("#custusername").val(),
+    type: "POST",
+    success:function(data){
+        $("#user-availability-status").html(data);
+        $("#loaderIcon").hide();
+    },
+    error:function (){}
+    });
+}
+</script>
+
     <body>
         <div class="header">
             <a href="userRegister.php"><img src="Image/logo.jpg" alt="Logo" height="250px"></a>
@@ -85,19 +113,25 @@ if(isset($_POST['custregister'])){
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-4">
                     <div class="input-group">
+                        
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: larger;"></i></span>
-                        <input type="text" class="form-control form-control input-lg" name="custusername" placeholder="Username" required>
-                    </div>
+                        <input type="text" class="form-control form-control input-lg" name="custusername" id="custusername" placeholder="Username"  onBlur="checkAvailability()" required>
+                        </div>
+                        <div> <span id="user-availability-status"></span> </div>
+   
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true" style="font-size: larger;"></i></span>
                         <input type="text" class="form-control form-control input-lg" name="custhpnumber" placeholder="Phone Number" required>
                     </div>
+
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true" style="font-size: larger;"></i></span>
-                        <input type="text" class="form-control form-control input-lg" name="custemail" placeholder="Email Address" required>
+                        <input type="email" class="form-control form-control input-lg" name="custemail"  placeholder="Email Address" required>
+                        
                     </div>
+
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true" style="font-size: large;"></i></span>
@@ -122,7 +156,7 @@ if(isset($_POST['custregister'])){
                     </div>
                     <div class="showPwd"><input type="checkbox" onclick="showPassword()">&nbsp;Show Password</div>
                         <br>
-                        <button type="submit" name="custregister" class="registerbtn"><label style="font-size: larger;">Register</label></button>
+                        <button type="submit" id="submit" name="custregister" class="registerbtn"><label style="font-size: larger;">Register</label></button>
                     </div>  
                 </div>
             </div>
