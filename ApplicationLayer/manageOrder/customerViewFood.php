@@ -36,53 +36,7 @@ function filterTable($query)
 
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>PHP HTML TABLE DATA SEARCH</title>
-        <style>
-            table,tr,th,td
-            {
-                border: 1px solid black;
-            }
-        </style>
-    </head>
-    <body>
-        
-        <form action="" method="post">
-            <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
-            <input type="submit" name="search" value="Filter"><br><br>
-            
-            <table>
-                <tr>
 
-                    <th>Service Type</th>
-                    <th>Item Name</th>
-                    <th>Item Price</th>
-                </tr>
-
-      <!-- populate table from mysql database -->
-                <?php while($row = mysqli_fetch_array($search_result)):?>
-                <tr>
-                    
-                    <td><?php echo $row['servicetype'];?></td>
-                    <td><?php echo $row['itemname'];?></td>
-                    <td><?php echo $row['itemprice'];?></td>
-                </tr>
-                <?php endwhile;?>
-            </table>
-        </form>
-        
-    </body>
-</html>
-
-
-
-
-</table>
-</div>
-</body>
-</html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -132,7 +86,51 @@ function filterTable($query)
         <h3 style="margin-left: 1em; margin-top: 1em; text-decoration: underline;">Customer View Food Service</h3>
         <br><br>
 		
-  
+  <!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP HTML TABLE DATA SEARCH</title>
+        <style>
+            table,tr,th,td
+            {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <form action="" method="post">
+            <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
+            <input type="submit" name="search" value="Filter"><br><br>
+            
+            <table>
+                <tr>
+
+                    <th>Service Type</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+
+      <!-- populate table from mysql database -->
+                <?php while($row = mysqli_fetch_array($search_result)):?>
+                <tr>
+                    
+                    <td><?php echo $row['servicetype'];?></td>
+                    <td><?php echo $row['itemname'];?></td>
+                    <td><?php echo $row['itemprice'];?></td>
+                </tr>
+                <?php endwhile;?>
+            </table>
+        </form>
+        
+    </body>
+</html>
+
+
+</table>
+</div>
+</body>
+</html>
 </form>
 
             <div style="margin-left: 1.5em;">
