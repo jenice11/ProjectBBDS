@@ -121,6 +121,7 @@ function filterTable($query)
                 </tr>
                 <?php endwhile;?>
             </table>
+			<br><br>
         </form>
         
     </body>
