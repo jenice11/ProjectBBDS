@@ -1,3 +1,5 @@
+
+
 <?php
     require_once '../../BusinessLayer/controller/manageTrackingController.php';
 
@@ -7,10 +9,41 @@
     $notification = new manageTrackingController();
     $data = $notification->viewSPP($spID);
 
+$host = 'localhost';
+$user = 'root';
+$pass = 'root';
+$db = 'sdw';
+
+$connn = new mysqli($host, $user, $pass, $db) or die("Unable to connect");
+
 ?>
 <!DOCTYPE html>
 <html>
     <head>
+    <?php
+
+//here start
+    
+
+for($i = 0; $i<10 ; $i++){
+
+    $count = "SELECT COUNT(itemname) AS count1 FROM order1 WHERE serviceID='$i'";
+    $cResult = mysqli_query($connn, $count);
+    while($row = mysqli_fetch_assoc($cResult)){
+
+        $cOutput = $row['count1'];
+    }
+    $cUpdate = "UPDATE sales SET totalsold = '".$cOutput."' WHERE serviceID='$i'";
+    $cUpdateResult = mysqli_query($connn, $cUpdate);
+
+//here end
+?>
+<?php
+      
+    }
+
+?>
+
         <title>Service Provider Sales Report</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="ExternalCSS/topnav.css">
@@ -40,6 +73,38 @@
         </style>
     </head>
     <body>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+var data = google.visualization.arrayToDataTable([
+  ['itemname', 'totalsold'],
+ <?php
+ $chartsql = "SELECT * FROM sales";
+ $chartQuery = mysqli_query($connn,$chartsql);
+  while ($chartresult = mysqli_fetch_assoc($chartQuery)) {
+    echo"['".$chartresult['itemname']."',".$chartresult['totalsold']."],";
+  }
+
+ ?>
+]);
+
+var options = {
+  title: 'Total Sales'
+};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
         <div class="topnav">
             <a href="../../ApplicationLayer/manageService/serviceProviderServiceView.php?spID=<?=$_SESSION['spID']?>"><img src="Image/largerlogo.png" width="110px" height="70px"><label style="font-size: 120%; padding-right: 5px;">Homepage</label></a>
             
@@ -53,6 +118,7 @@
         <h3 style="margin-left: 1em; margin-top: 1em; text-decoration: underline;">Service Provider Sales</h3>
         <br><br>
 
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
             <div style="margin-left: 1.5em;">
 
                 <table>
@@ -88,11 +154,15 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><b>TOTAL PRICE</b></td>
+                        <td><b>TOTAL PROFIT</b></td>
                         <td><?php echo "$totalprice"; ?></td>
                     </tr>
+
+
+                    
                 </table>
             </div>
+            
             </center>
     </body>
 </html>
