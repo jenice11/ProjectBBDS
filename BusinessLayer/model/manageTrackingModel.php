@@ -20,9 +20,8 @@ class manageTrackingModel{
     //sql for sql for retrieve data for runner pending deliver order notification
     function viewRunnerNotification(){
         $sql = "select * from order1 inner join service on order1.serviceID = service.serviceID inner join customer on order1.custID = customer.custID inner join serviceprovider on service.spID = serviceprovider.spID where order1.status=2";
-        //$args = [':runnerID'=>$this->runnerID];
-       // return DB::run($sql, $args);
-        return DB::run($sql);
+        $args = [':runnerID'=>$this->runnerID];
+        return DB::run($sql, $args);
     }
     //sql for update the order status for accept the order
     function acceptSPNotification(){

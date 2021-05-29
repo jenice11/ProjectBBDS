@@ -41,38 +41,6 @@ class manageLoginAndRegisterController{
         }
     }
 
-     function custresetpass(){
-        $user = new manageLoginAndRegisterModel();
-        $user->custusername = $_POST['custusername'];
-        if($_POST['custpassword'] == $_POST['custpassword']){
-            $user->custpassword = $_POST['custpassword1'];
-            if($user->custresetpass()){
-                  $message = "YOUR PASSWORD IS SUCCESSFULLY RESET!";
-            echo "<script type='text/javascript'>alert('$message');
-            window.location = 'customerLogin.php';</script>";
-            }
-        }
-        else{
-            echo "<script>alert('Password Not Match')</script>";
-        }
-    }
-
-
-  function spresetpass(){
-         $user = new manageLoginAndRegisterModel();
-    $user->spusername = $_POST['spusername'];
-    if($_POST['sppassword'] == $_POST['sppassword']){
-            $user->sppassword = $_POST['sppassword1'];
-            if($user->spresetpass()){
-                  $message = "YOUR PASSWORD IS SUCCESSFULLY RESET!";
-            echo "<script type='text/javascript'>alert('$message');
-            window.location = 'serviceproviderLogin.php';</script>";
-        }
-        else{
-            echo "<script>alert('Password Not Match')</script>";
-        }
-    }
-
     function spRegister(){
         $user = new manageLoginAndRegisterModel();
         $user->spusername = $_POST['spusername'];
@@ -92,7 +60,6 @@ class manageLoginAndRegisterController{
 		    window.location = 'serviceproviderLogin.php';</script>";
         }
     }
-
 
     function spLogin(){
         $user = new manageLoginAndRegisterModel();
@@ -115,7 +82,6 @@ class manageLoginAndRegisterController{
         }
     }
 
-
     function runnerRegister(){
         $user = new manageLoginAndRegisterModel();
         $user->runnerusername = $_POST['runnerusername'];
@@ -134,21 +100,6 @@ class manageLoginAndRegisterController{
         }
     }
 
-     function passresetrunner(){
-         $user = new manageLoginAndRegisterModel();
-        $user->runnerusername = $_POST['runnerusername'];
-         if($_POST['runnerpassword'] == $_POST['runnerpassword']){
-            $user->runnerpassword = $_POST['runnerpassword1'];
-            if($user->passresetrunner()){
-                  $message = "YOUR PASSWORD IS SUCCESSFULLY RESET!";
-            echo "<script type='text/javascript'>alert('$message');
-            window.location = 'runnerLogin.php';</script>";
-        }
-        else{
-            echo "<script>alert('Password Not Match')</script>";
-          }
-    }
-
     function runnerLogin(){
         $user = new manageLoginAndRegisterModel();
         $user->runnerusername = $_POST['runnerusername'];
@@ -162,15 +113,14 @@ class manageLoginAndRegisterController{
             $_SESSION["runnerusername"] = $_POST['runnerusername'];
             echo "<script>alert('Login Succesful! Welcome to Beep Beep Delivery System');
             window.location = '../manageTracking/runnerHomePage.php?runnerID=".$_SESSION['runnerID']."';</script>";  
-            }
+        }
         else {
             $message = "Invalid username and password! Please try again!!!";
             echo "<script type='text/javascript'>alert('$message');
             window.location = 'runnerLogin.php';</script>";
         }
+    }
 }
-}
-}
-}
-  
-?> 
+
+?>
+    

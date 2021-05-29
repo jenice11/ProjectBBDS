@@ -10,15 +10,12 @@ if(isset($_POST['register'])){
 <html>
     <head>
         <title>Service Provider Register</title>
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="ExternalCSS/logo.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <style>
             p {
@@ -58,13 +55,6 @@ if(isset($_POST['register'])){
                 cursor: pointer;
                 opacity: 0.9;
             }
-
-            .status-available{
-                color:#2FC332;
-            }
-            .status-not-available{
-                color:#D60202;
-            }
         </style>
     </head>
 
@@ -81,23 +71,6 @@ if(isset($_POST['register'])){
         }
     </script>
 
-     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-function checkAvailability() {
-    $("#loaderIcon").show();
-    jQuery.ajax({
-    url: "check_availability.php",
-    data:'spusername='+$("#spusername").val(),
-    type: "POST",
-    success:function(data){
-        $("#user-availability-status").html(data);
-        $("#loaderIcon").hide();
-    },
-    error:function (){}
-    });
-}
-</script>
-
     <body>
         <div class="header">
             <a href="userRegister.php"><img src="Image/logo.jpg" alt="Logo" height="250px"></a>
@@ -113,11 +86,8 @@ function checkAvailability() {
                 <div class="col-lg-4 col-lg-offset-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: larger;"></i></span>
-                        <input type="text" class="form-control form-control input-lg" name="spusername" id="spusername" placeholder="Username" onBlur="checkAvailability()" required>
+                        <input type="text" class="form-control form-control input-lg" name="spusername" placeholder="Username" required>
                     </div>
-
-                        <div> <span id="user-availability-status"></span> </div>
-
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true" style="font-size: larger;"></i></span>
@@ -167,7 +137,7 @@ function checkAvailability() {
                     </div>
                     <div class="showPwd"><input type="checkbox" onclick="showPassword()">&nbsp;Show Password</div>
                         <br>
-                        <button type="submit" id="submit" name="register" class="registerbtn"><label style="font-size: larger;">Register</label></button>
+                        <button type="submit" name="register" class="registerbtn"><label style="font-size: larger;">Register</label></button>
                     </div>  
                 </div>
             </div>

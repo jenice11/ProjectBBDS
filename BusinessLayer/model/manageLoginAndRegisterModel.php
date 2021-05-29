@@ -13,7 +13,6 @@ class manageLoginAndRegisterModel{
         $stmt = DB::run($sql, $args);
         $count = $stmt->rowCount();
         return $count;
-
     }
 
     function customerLogin(){
@@ -21,25 +20,6 @@ class manageLoginAndRegisterModel{
     	$args = [':custusername'=>$this->custusername, ':custpassword'=>$this->custpassword];
         $stmt = DB::run($sql, $args);
         return $stmt;
-    }
-
-        function custresetpass(){
-        $sql = "UPDATE customer SET custpassword=:custpassword WHERE custusername=:custusername";
-        $param = [':custpassword'=>$this->custpassword, ':custusername'=>$this->custusername];
-        return DB::run($sql,$param);
-    }
-
-     function spresetpass(){
-        $sql = "update serviceprovider set sppassword=:sppassword where spusername=:spusername";
-        $param = [':sppassword'=>$this->sppassword, ':spusername'=>$this->spusername];
-        return DB::run($sql,$param);
-
-    }
-
-     function passresetrunner(){
-         $sql = "UPDATE runner SET runnerpassword=:runnerpassword WHERE runnerusername=:runnerusername";
-        $param = [':runnerpassword'=>$this->runnerpassword, ':runnerusername'=>$this->runnerusername];
-        return DB::run($sql,$param);
     }
     
     function serviceproviderRegister(){
@@ -72,6 +52,4 @@ class manageLoginAndRegisterModel{
         return $stmt;
     }
 }
-
-
 ?>
