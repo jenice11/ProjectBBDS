@@ -5,6 +5,9 @@
 
     $service = new manageOrderController();
     $data = $service->viewOrder();
+    if (isset($_POST['update'])) {
+        $service->updatedOrder();
+    }
 
     $service1 = new managePaymentController();
     if(isset($_POST['add'])){
@@ -80,7 +83,7 @@
                         <tr>
                             <td><input type="text" name="itemname" value="<?=$row['itemname']?>" class="noborder" readonly></td>
                             <td><input type="text" name="itemprice" value="<?=$row['itemprice']?>" class="noborder" readonly></td>
-                            <td><input type="text" name="itemquantity" value="<?=$row['itemquantity']?>" style="width: 3em;" class="noborder"></td>
+                            <td><input type="text" name="itemquantity" value="<?=$row['itemquantity']?>" style="width: 3em;" class="noborder" readonly></td>
                             <td>
                                 <input type="text" name="subtotal" value="<?=number_format($subtotal,2); ?>" id="subtotal" style="width: 5em;"  class="noborder" readonly>
                                 <?php
@@ -93,23 +96,29 @@
                             </td>
                             <td>
                                 <input type="hidden" name="serviceID" value="<?=$row['serviceID']?>">
-                                <button type="submit" name="add"><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Confirm </button>
+                                <input type="number" name="itemquantity" value="<?=$row['itemquantity']?>" style="width: 3em;" class="noborder" >
+                                <button type="submit" name="update" onclick="return confirm('Do you want to update the selected row data.');"><i aria-hidden="true"></i> &nbsp;Update </button>
                             </td>
                         </tr>
-                    </form>
-                    <?php } ?>
-                    <tr>
+                        <tr>
                         <td></td>
                         <td></td>
                         <td style="font-weight: bold; font-size: larger"><?php echo "Delivery Fee";?></td>
                         <td style="font-weight: bold; font-size: larger"><?php echo number_format((float)$totaldeliveryfee, 2, '.', ''); ?></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
                         <td style="font-weight: bold; font-size: larger"><?php echo "TOTAL PRICE";?></td>
                         <td style="font-weight: bold; font-size: larger"><?php echo number_format((float)$totalpricedelivery, 2, '.', ''); ?></td>
+                        <td>
+                            <input type="hidden" name="serviceID" value="<?=$row['serviceID']?>">
+                            <button type="submit" name="add"><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Confirm </button>
+                        </td>
                     </tr>
+                    </form>
+                    <?php } ?>
             </table>
             <div style="text-align: right;">
             <label style="color: red">***</label>Click the CONFIRM button(s) before PAY.<br>
