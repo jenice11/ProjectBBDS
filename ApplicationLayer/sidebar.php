@@ -28,7 +28,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-2">
   <!-- Brand Logo -->
-  <a href="./serviceProviderServiceView.php?spID=<?=$_SESSION['spID']?>" class="brand-link">
+  <a href="../manageService/serviceProviderServiceView.php?spID=<?=$_SESSION['spID']?>" class="brand-link">
     <img src="Image/largerlogo.png" alt="BBDS Logo" class="brand-image img-circle elevation-2">
     <span class="brand-text font-weight-light">BBDS</span>
   </a>
@@ -43,7 +43,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
            <li class="nav-item">
-             <a href="../../ApplicationLayer/manageUserProfile/serviceproviderProfile.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
+             <a href="../manageUserProfile/serviceproviderProfile.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
               <i class="far fa-user nav-icon"></i>
               <p>My Account</p>
             </a>
@@ -60,14 +60,14 @@
            with font-awesome or any other icon font library -->
            
            <li class="nav-item">
-            <a href="./serviceProviderServiceView.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
+            <a href="../manageService/serviceProviderServiceView.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
               <i class="fas fa-list nav-icon"></i>
               <p>List of Services</p>
             </a>
           </li>
           
           <li class="nav-item">
-            <a href="./serviceProviderServiceAdd.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
+            <a href="../manageService/serviceProviderServiceAdd.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Add New Service
@@ -75,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../../ApplicationLayer/manageTracking/serviceProviderNotification.php?spID=<?=$_SESSION['spID']?>"" class="nav-link">
+            <a href="../manageTracking/serviceProviderNotification.php?spID=<?=$_SESSION['spID']?>"" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
                 View Incoming Order
@@ -83,7 +83,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../../ApplicationLayer/manageTracking/serviceProviderSales.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
+            <a href="../manageTracking/serviceProviderSales.php?spID=<?=$_SESSION['spID']?>" class="nav-link">
               <i class="nav-icon fas fa-chart-line"></i>
               <p>
                 Sales Dashboard

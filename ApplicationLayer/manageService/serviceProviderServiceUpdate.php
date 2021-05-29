@@ -44,7 +44,7 @@ if(isset($_POST['update'])){
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
 
-            <?php include("sidebar.php") ?>
+            <?php include("../sidebar.php") ?>
             <!-- Content Wrapper. Contains page content -->
                 <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
