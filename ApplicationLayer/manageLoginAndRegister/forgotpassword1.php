@@ -1,15 +1,17 @@
 <?php
 require_once '../../BusinessLayer/controller/manageLoginAndRegisterController.php';
+
 $user = new manageLoginAndRegisterController();
 
-if(isset($_POST['login'])){
-    $user->runnerLogin();
+if(isset($_POST['submit'])){
+    $user->fgtpwd();
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Runner Login</title>
+        <title>Customer's Password Recovery</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="ExternalCSS/logo.css">
@@ -49,6 +51,10 @@ if(isset($_POST['login'])){
                 color: blue;
             }
 
+            .reset {
+                color: blue;
+            }
+
             .register:hover {
                 color : rgb(0, 81, 255);
                 text-decoration: none; 
@@ -70,6 +76,7 @@ if(isset($_POST['login'])){
             }
         }
     </script>
+    
 
     <body>
         <div class="header">
@@ -78,7 +85,7 @@ if(isset($_POST['login'])){
         </div>
 
         <br>
-        <p><strong>Login as Runner</strong>:</p>
+        <p><strong>Customer's Password Recovery</strong>:</p>
         <br>
 
         <form action="" method="POST">
@@ -86,23 +93,22 @@ if(isset($_POST['login'])){
                 <div class="col-lg-4 col-lg-offset-4">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: larger;"></i></span>
-                        <input type="text" class="form-control form-control input-lg" name="runnerusername" placeholder="Username" required>
+                        <input type="text" class="form-control form-control input-lg" name="custusername" placeholder="Username" required>
                     </div>
                     <br>
                     <div class="input-group">         
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true" style="font-size: larger;"></i></span>
-                        <input type="password" class="form-control form-control input-lg" name="runnerpassword" id="password" placeholder="Password" required>
+                        <input type="password" class="form-control form-control input-lg" name="custpassword" id="password" placeholder="New Password" required>
+                        <input type="password" class="form-control form-control input-lg" name="custpassword1" id="password" placeholder="Confirm Password" required>
                     </div>
                     <div class="showPwd"><input type="checkbox" onclick="showPassword()">&nbsp;Show Password</div>
                     <br>
-                    <button type="submit" name="login" class="loginBtn"><label style="font-size: larger;">Log In</label></button>
+                    <button type="submit" name="submit" class="loginBtn"><label style="font-size: larger;">Reset My Password</label></button>
                 </div>  
             </div>
         </form>
-        <br>
-        <div style="text-align: center; font-size: medium;">
-            Don't have an account? <a class="register" href="./runnerRegister.php"><u>Register here</u></a>.
-            <div><a class="reset" href="./runResetPass.php"><u>Forgot Password?</u></a>.</div>
+        
+        
         </div>
     </body>
 </html>

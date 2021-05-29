@@ -9,6 +9,7 @@ class DB
     // create a new PDO connection
     $pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
     return $pdo;
   }
@@ -32,6 +33,5 @@ class DB
             die();
         }   
      }
-     
 }
 ?>
