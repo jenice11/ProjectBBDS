@@ -74,7 +74,7 @@
                             <tr>
                                 <td><input type="text" name="itemname" value="<?=$row['itemname']?>" class="noborder" readonly></td>
                                 <td><input type="text" name="itemprice" value="<?=$row['itemprice']?>" class="noborder" readonly></td>
-                                <td><input type="number" name="itemquantity" value="<?=$row['itemquantity']?>" class="noborder" style="width: 3em;"></td>
+                        <td><input type="number" name="itemquantity" value="<?=$row['itemquantity']?>" style="width: 3em;"></td>
                                 
                                 <td>
                                     <input type="text" name="subtotal" value="<?=number_format($subtotal,2); ?>" id="subtotal" style="width: 5em;" class="noborder" readonly>

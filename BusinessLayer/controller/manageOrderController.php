@@ -66,5 +66,20 @@ class manageOrderController{
 		    window.location = './customerViewCart.php?custID=".$_SESSION['custID']."';</script>";
         }
     }
+
+    function updatedOrder(){
+        $service = new manageOrderModel();
+        $service->custID = $_SESSION['custID'];
+        $service->serviceID = $_POST['serviceID'];
+        $service->itemname = $_POST['itemname'];
+        $service->itemprice = $_POST['itemprice'];
+        $service->itemquantity = $_POST['itemquantity'];
+
+        if($service->updateOrders()){
+            $message = "Success Update!";
+		    echo "<script type='text/javascript'>alert('$message');
+		    window.location = './paymentCheckout.php?custID=".$_SESSION['custID']."';</script>";
+        }
+    }
 }
 ?>
