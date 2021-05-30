@@ -119,10 +119,6 @@ if(isset($_POST['delete'])){
 <!-- REQUIRED SCRIPTS -->
 
 
-
-
-
-
 </body>
 
 </html>
@@ -140,7 +136,6 @@ if(isset($_POST['delete'])){
       $('[data-toggle="tooltip"]').tooltip()
     })
 
-
 </script>
 
 <!-- jQuery -->
@@ -154,8 +149,3 @@ if(isset($_POST['delete'])){
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.jss"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-
-
-
-
-
