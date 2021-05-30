@@ -4,6 +4,7 @@ require_once '../../BusinessLayer/model/manageServiceModel.php';
 class manageServiceController{
     
     function add(){
+      
         $item = new manageServiceModel();
         $item->spID = $_SESSION['spID'];
         $item->servicetype = $_POST['servicetype'];
